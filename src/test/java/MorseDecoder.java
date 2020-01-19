@@ -62,6 +62,11 @@ public class MorseDecoder {
         assertThat(decode(".... .")).isEqualTo("HE");
     }
 
+    @Test
+    public void decode_four_point_and_space_and_a_point_string_should_return_H_space_E() {
+        assertThat(decode("....   .")).isEqualTo("H E");
+    }
+
     private String decode(String phrase) {
         if (phrase.length() == 0)
             return "";
