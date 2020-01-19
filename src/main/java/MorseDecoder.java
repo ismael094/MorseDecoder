@@ -15,32 +15,32 @@ public class MorseDecoder {
 
     private void initMap() {
         MorseCode = new HashMap<String, String>();
-        MorseCode.put(".-", "a");
-        MorseCode.put("-...", "b");
-        MorseCode.put("-.-.", "c");
-        MorseCode.put("-..", "d");
-        MorseCode.put(".", "e");
-        MorseCode.put("..-.", "f");
-        MorseCode.put("--.-", "g");
-        MorseCode.put("....", "h");
-        MorseCode.put("..", "i");
-        MorseCode.put(".---", "j");
-        MorseCode.put("-.-", "k");
-        MorseCode.put(".-..", "l");
-        MorseCode.put("--", "m");
-        MorseCode.put("-.", "n");
-        MorseCode.put("---", "o");
-        MorseCode.put(".--.", "p");
-        MorseCode.put("--.-", "q");
-        MorseCode.put(".-.", "r");
-        MorseCode.put("...", "s");
-        MorseCode.put("-", "t");
-        MorseCode.put("..-", "u");
-        MorseCode.put("...-", "v");
-        MorseCode.put(".--", "w");
-        MorseCode.put("-..-", "x");
-        MorseCode.put("-.--", "y");
-        MorseCode.put("--..", "z");
+        MorseCode.put(".-", "A");
+        MorseCode.put("-...", "B");
+        MorseCode.put("-.-.", "C");
+        MorseCode.put("-..", "D");
+        MorseCode.put(".", "E");
+        MorseCode.put("..-.", "F");
+        MorseCode.put("--.-", "G");
+        MorseCode.put("....", "H");
+        MorseCode.put("..", "I");
+        MorseCode.put(".---", "J");
+        MorseCode.put("-.-", "K");
+        MorseCode.put(".-..", "L");
+        MorseCode.put("--", "M");
+        MorseCode.put("-.", "N");
+        MorseCode.put("---", "O");
+        MorseCode.put(".--.", "P");
+        MorseCode.put("--.-", "Q");
+        MorseCode.put(".-.", "R");
+        MorseCode.put("...", "S");
+        MorseCode.put("-", "T");
+        MorseCode.put("..-", "U");
+        MorseCode.put("...-", "V");
+        MorseCode.put(".--", "W");
+        MorseCode.put("-..-", "X");
+        MorseCode.put("-.--", "Y");
+        MorseCode.put("--..", "Z");
     }
 
     public String decode(String morseCode) {
@@ -51,9 +51,9 @@ public class MorseDecoder {
                 .collect(Collectors.joining(" "));
     }
 
-    private String decodeMorseWord(String phrase) {
-        return Arrays.stream(splitStringBy(phrase, CHAR_DELIMITER))
-                .map(this::getLetterFromMorse)
+    private String decodeMorseWord(String word) {
+        return Arrays.stream(splitStringBy(word, CHAR_DELIMITER))
+                .map(MorseCode::get)
                 .collect(Collectors.joining());
     }
 
@@ -61,12 +61,4 @@ public class MorseDecoder {
         return string.split(delimiter);
     }
 
-    private String getLetterFromMorse(String character) {
-        try {
-            return MorseCode.get(character).toUpperCase();
-        } catch (Exception e) {
-            return "";
-        }
-
-    }
 }
