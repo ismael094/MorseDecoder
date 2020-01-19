@@ -66,7 +66,11 @@ public class MorseDecoder {
         if (phrase.length() == 0)
             return "";
         return Arrays.stream(phrase.split(" "))
-                .map(i -> MorseCode.get(i).toUpperCase())
+                .map(this::getLetterFromMorse)
                 .collect(Collectors.joining(""));
+    }
+
+    private String getLetterFromMorse(String character) {
+        return MorseCode.get(character).toUpperCase();
     }
 }
