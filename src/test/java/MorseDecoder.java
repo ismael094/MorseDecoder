@@ -1,8 +1,10 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -63,6 +65,8 @@ public class MorseDecoder {
     private String decode(String phrase) {
         if (phrase.length() == 0)
             return "";
-        return MorseCode.get(phrase).toUpperCase();
+        return Arrays.stream(phrase.split(" "))
+                .map(i -> MorseCode.get(i).toUpperCase())
+                .collect(Collectors.joining(""));
     }
 }
