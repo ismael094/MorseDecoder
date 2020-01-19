@@ -58,6 +58,6 @@ public class MorseDecoder {
     private String decode(String phrase) {
         if (phrase.length() == 0)
             return "";
-        return "E";
+        return MorseCode.get(phrase).toUpperCase();
     }
 }
