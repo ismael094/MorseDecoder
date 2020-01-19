@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class MorseDecoder {
+    public static final String WORD_DELIMITER = "   ";
+    public static final String CHAR_DELIMITER = " ";
     Map<String, String> MorseCode;
 
     public MorseDecoder() {
@@ -44,15 +46,15 @@ public class MorseDecoder {
     public String decode(String morseCode) {
         if (morseCode.length() == 0)
             return "";
-        return Arrays.stream(splitStringBy(morseCode.trim(), "   "))
+        return Arrays.stream(splitStringBy(morseCode.trim(), WORD_DELIMITER))
                 .map(this::decodeMorseWord)
                 .collect(Collectors.joining(" "));
     }
 
     private String decodeMorseWord(String phrase) {
-        return Arrays.stream(splitStringBy(phrase, " "))
+        return Arrays.stream(splitStringBy(phrase, CHAR_DELIMITER))
                 .map(this::getLetterFromMorse)
-                .collect(Collectors.joining(""));
+                .collect(Collectors.joining());
     }
 
     private String[] splitStringBy(String string, String delimiter) {
