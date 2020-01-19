@@ -70,6 +70,12 @@ public class MorseDecoder {
     private String decode(String phrase) {
         if (phrase.length() == 0)
             return "";
+        return Arrays.stream(phrase.split("   "))
+                .map(this::decodeWord)
+                .collect(Collectors.joining(" "));
+    }
+
+    private String decodeWord(String phrase) {
         return Arrays.stream(phrase.split(" "))
                 .map(this::getLetterFromMorse)
                 .collect(Collectors.joining(""));
