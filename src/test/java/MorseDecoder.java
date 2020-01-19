@@ -9,6 +9,6 @@ public class MorseDecoder {
     }
 
     private String decode(String phrase) {
-        return null;
+        return "";
     }
 }
