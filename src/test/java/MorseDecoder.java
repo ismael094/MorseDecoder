@@ -46,13 +46,18 @@ public class MorseDecoder {
     }
 
     @Test
-    public void decode_an_point_string_should_return_letter_E() {
+    public void decode_a_point_string_should_return_letter_E() {
         assertThat(decode(".")).isEqualTo("E");
     }
 
     @Test
     public void decode_four_point_string_should_return_letter_H() {
         assertThat(decode("....")).isEqualTo("H");
+    }
+
+    @Test
+    public void decode_four_point_and_a_point_string_should_return_HE() {
+        assertThat(decode(".... .")).isEqualTo("HE");
     }
 
     private String decode(String phrase) {
